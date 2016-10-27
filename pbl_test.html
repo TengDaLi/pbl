@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+    <style>
+        img{width:350px;}
+        div{ width:350px; position: absolute;left: 0; top: 0; border: 1px solid #ccc; border-radius: 10%;}
+    </style>
+	<body>
+	</body>
+	<script>
+		var json={
+			list:[
+		{src:"images/1.jpg", title:"苹果"},
+		{src:"images/2.jpg", title:"香蕉"},
+		{src:"images/3.jpg", title:"桃"},
+		{src:"images/4.jpg", title:"橘子"},
+		{src:"images/5.jpg", title:"梨"},
+		{src:"images/6.jpg", title:"杏"},
+		{src:"images/7.jpg", title:"西瓜"},
+		{src:"images/8.jpg", title:"哈密瓜"},
+		{src:"images/9.jpg", title:"菠萝"},
+		{src:"images/10.jpg", title:"葡萄"},
+		{src:"images/11.jpg", title:"樱桃"},
+		{src:"images/12.jpg", title:"草莓"},
+		{src:"images/13.jpg", title:"猕猴桃"},
+		{src:"images/14.jpg", title:"火龙果"},
+		{src:"images/15.jpg", title:"荔枝"},
+		{src:"images/1.jpg", title:"aaaa"},
+		{src:"images/2.jpg", title:"bbb"},
+		{src:"images/3.jpg", title:"ccc"},
+		{src:"images/4.jpg", title:"ddd"},
+		{src:"images/5.jpg", title:"5"},
+		{src:"images/6.jpg", title:"6"},
+		{src:"images/7.jpg", title:"fasdf"},
+		{src:"images/8.jpg", title:"adga"},
+		{src:"images/9.jpg", title:"fwe"},
+		{src:"images/10.jpg", title:"asdfwe"},
+		{src:"images/11.jpg", title:"34sdfa"},
+		{src:"images/12.jpg", title:"cx4"},
+		{src:"images/13.jpg", title:"cfg4"},
+		{src:"images/14.jpg", title:"zxddd"},
+		{src:"images/15.jpg", title:"faewt"},
+		{src:"images/1.jpg", title:"aaaa"},
+		{src:"images/2.jpg", title:"bbb"},
+		{src:"images/3.jpg", title:"ccc"},
+		{src:"images/4.jpg", title:"ddd"},
+		{src:"images/5.jpg", title:"5"},
+		{src:"images/6.jpg", title:"6"},
+		{src:"images/7.jpg", title:"fasdf"},
+		{src:"images/8.jpg", title:"adga"},
+		{src:"images/9.jpg", title:"fwe"},
+		{src:"images/10.jpg", title:"asdfwe"},
+		{src:"images/11.jpg", title:"34sdfa"},
+		{src:"images/12.jpg", title:"cx4"},
+		{src:"images/13.jpg", title:"cfg4"},
+		{src:"images/14.jpg", title:"zxddd"},
+		{src:"images/15.jpg", title:"faewt"}
+	]
+		};
+		var arr=json.list;
+		var body=document.documentElement.clientWidth||document.body.clientWidth;
+		for(var i=0;i<arr.length; i++){
+			var obj=arr[i];
+			var div=document.createElement("div");
+			body.appendChild(div);
+			var img=document.createElement("img");
+			img.src=obj.src;
+			div.appendChild(img);
+			var p=document.createElement("p");
+			p.innerHTML=obj.title+""+i;
+			div.appendChild(p);
+		}
+		window.onload=function () {
+            pbl();pbl();
+        };
+        window.onresize=function () {
+            pbl();
+        };
+		function pbl(){
+			var allDiv=document.getElementsByTagName("div");
+			var winWidth=document.documentElement.clientWidth||document.body.clientWidth;
+            var divWidth=allDiv[0].offsetWidth;
+            var num=Math.floor(winWidth/divWidth);
+            var dis=(winWidth-divWidth*num)/(num+1);
+            var posi=[];
+            for(var i=0; i<num; i++){
+                posi[i]={
+                    x:(divWidth+dis)*i+dis,
+                    y:0
+                }
+            }
+            //循环所有的图片，给每一个图片设置坐标。
+            for(var i=0; i<allDiv.length; i++) {
+                var div=allDiv[i];
+                var index=getIndex();
+                var obj=posi[index];
+                div.style.left=obj.x;
+                div.style.top=obj.y;
+
+            }
+            function getIndex() {
+                var index=0;
+                var min=pisi[index].y;
+                for(var j=0; j<posi.length; j++) {
+                    if(min>posi[j].y){
+                        min=posi[j];
+                        index=j;
+                    }
+                }
+                return index;
+            }
+		}
+
+	</script>
+</html>
